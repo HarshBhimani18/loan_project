@@ -11,15 +11,16 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary-hover)]",
+    "bg-[var(--primary)] text-white hover:bg-[var(--primary-hover)]",
   secondary:
-    "border border-[var(--border)] bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90",
+    "border border-[var(--border)] bg-[var(--secondary)] text-white hover:opacity-90",
 };
 
 export function Button({
   children,
   className,
   variant = "primary",
+  style,
   ...props
 }: ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode;
@@ -27,7 +28,7 @@ export function Button({
   variant?: Variant;
 }) {
   return (
-    <button className={merge(base, variants[variant], className)} {...props}>
+    <button className={merge(base, variants[variant], className)} style={{ color: "#ffffff", ...style }} {...props}>
       {children}
     </button>
   );

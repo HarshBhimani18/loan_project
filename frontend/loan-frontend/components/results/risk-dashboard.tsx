@@ -44,13 +44,15 @@ export function RiskDashboard({ status, probability, prediction, error }: Props)
           <div className="flex flex-wrap gap-3">
             <Link
               href="/predict"
-              className="text-button inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 font-semibold text-[var(--primary-foreground)] transition-colors hover:bg-[var(--primary-hover)]"
+              className="text-button inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 font-semibold text-white transition-colors hover:bg-[var(--primary-hover)]"
+              style={{ color: "#ffffff" }}
             >
               Try Again
             </Link>
             <Link
               href="/"
-              className="text-button inline-flex items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-4 py-2.5 font-semibold text-[var(--secondary-foreground)] transition-colors hover:opacity-90"
+              className="text-button inline-flex items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-4 py-2.5 font-semibold text-white transition-colors hover:opacity-90"
+              style={{ color: "#ffffff" }}
             >
               Back to Home
             </Link>
@@ -92,13 +94,15 @@ export function RiskDashboard({ status, probability, prediction, error }: Props)
           <div className="flex flex-wrap gap-3">
             <Link
               href="/predict"
-              className="text-button inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 font-semibold text-[var(--primary-foreground)] transition-colors hover:bg-[var(--primary-hover)]"
+              className="text-button inline-flex items-center justify-center rounded-lg bg-[var(--primary)] px-4 py-2.5 font-semibold text-white transition-colors hover:bg-[var(--primary-hover)]"
+              style={{ color: "#ffffff" }}
             >
               Run Another Prediction
             </Link>
             <Link
               href="/"
-              className="text-button inline-flex items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-4 py-2.5 font-semibold text-[var(--secondary-foreground)] transition-colors hover:opacity-90"
+              className="text-button inline-flex items-center justify-center rounded-lg border border-[var(--border)] bg-[var(--secondary)] px-4 py-2.5 font-semibold text-white transition-colors hover:opacity-90"
+              style={{ color: "#ffffff" }}
             >
               Back to Home
             </Link>
