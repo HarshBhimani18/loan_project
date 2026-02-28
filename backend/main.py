@@ -3,7 +3,6 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import joblib
-from pathlib import Path
 
 
 # -----------------------------
@@ -31,32 +30,6 @@ model = None
 scaler = None
 feature_columns = None
 numeric_columns = None
-BASE_DIR = Path(__file__).resolve().parent
-ARTIFACT_FILES = {
-    "model": BASE_DIR / "rf_model_test.pkl",
-    "scaler": BASE_DIR / "scaler.pkl",
-    "feature_columns": BASE_DIR / "feature_columns.pkl",
-    "numeric_columns": BASE_DIR / "numeric_columns.pkl",
-}
-
-
-def _is_lfs_pointer(path: Path) -> bool:
-    try:
-        with path.open("r", encoding="utf-8") as f:
-            first_line = f.readline().strip()
-        return first_line == "version https://git-lfs.github.com/spec/v1"
-    except UnicodeDecodeError:
-        return False
-
-
-def _validate_artifact(path: Path):
-    if not path.exists():
-        raise RuntimeError(f"Missing artifact file: {path.name}")
-    if _is_lfs_pointer(path):
-        raise RuntimeError(
-            f"Artifact '{path.name}' is a Git LFS pointer, not a real model file. "
-            "Run: git lfs install && git lfs pull"
-        )
 
 
 def load_artifacts():
@@ -67,13 +40,10 @@ def load_artifacts():
     global model, scaler, feature_columns, numeric_columns
 
     if model is None:
-        for artifact_path in ARTIFACT_FILES.values():
-            _validate_artifact(artifact_path)
-
-        model = joblib.load(ARTIFACT_FILES["model"])
-        scaler = joblib.load(ARTIFACT_FILES["scaler"])
-        feature_columns = joblib.load(ARTIFACT_FILES["feature_columns"])
-        numeric_columns = joblib.load(ARTIFACT_FILES["numeric_columns"])
+        model = joblib.load("rf_model_test.pkl")
+        scaler = joblib.load("scaler.pkl")
+        feature_columns = joblib.load("feature_columns.pkl")
+        numeric_columns = joblib.load("numeric_columns.pkl")
 
 
 # -----------------------------
@@ -122,4 +92,4 @@ def predict(input_data: LoanInput):
         }
 
     except Exception as e:
-        return {"error": f"{e.__class__.__name__}: {str(e)}"}
+        return {"error": str(e)}
