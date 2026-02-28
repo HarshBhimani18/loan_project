@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "CreditPilot | Credit Risk Intelligence",
+  title: "Loan Risk Intelligence",
   description: "Professional credit risk intelligence dashboard for loan default prediction.",
 };
 
